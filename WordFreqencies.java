@@ -1,3 +1,4 @@
+
 /* WordFreqencies */
 import java.io.BufferedReader;
 import java.io.File;
@@ -9,7 +10,7 @@ public class WordFreqencies {
     public static void main(String[] args) throws IOException {
         /* Call non-static tester() */
         WordFreqencies tester = new WordFreqencies();
-        tester.tester(); 
+        tester.tester();
     }
 
     private ArrayList<String> myWords;
@@ -23,34 +24,68 @@ public class WordFreqencies {
 
     /* void method findUnique() */
     public void findUnique() throws IOException {
-        /* Clear both myWords and myFreqs */
-        myWords.clear();
-        myFreqs.clear();
-        /* Select a file and then iterates over every word in the file */
-        File file = new File("testwordfreqs.txt");
+        /* Create a file object */
+        File file = new File("likeit.txt");
+        /* Create a buffered reader object */
         BufferedReader br = new BufferedReader(new FileReader(file));
-        /* Iterate over every word in the file */
-        for (String line; (line = br.readLine()) != null; ) {
-            /* Split the line into words and lowercase the text*/
-            String[] words = line.toLowerCase().split(" ");
-            /* Iterate over every word in the line */
-            for (String word : words) {
-                /* Check if the word is already in myWords */
-                if (myWords.contains(word)) {
-                    /* Get the index of the word in myWords */
-                    int index = myWords.indexOf(word);
-                    /* Increment the frequency of the word in myFreqs */
-                    myFreqs.set(index, myFreqs.get(index) + 1);
+        /* Declare string variable */
+        String st;
+        /* While loop to read each line of the file */
+        while ((st = br.readLine()) != null) {
+            /* Convert string to lower case */
+            st = st.toLowerCase();
+            /* Split string to array by whitespace */
+            String[] words = st.split("\\s+");
+            /* For loop to iterate through the array */
+            for (int i = 0; i < words.length; i++) {
+                /* Call non-static method indexOf() */
+                int index = indexOf(words[i]);
+                /* If condition to check if the word is unique */
+                if (index == -1) {
+                    /* Call non-static method addWord() */
+                    addWord(words[i]);
                 } else {
-                    /* Add the word to myWords */
-                    myWords.add(word);
-                    /* Add the frequency of the word to myFreqs */
-                    myFreqs.add(1);
+                    /* Call non-static method addFreq() */
+                    addFreq(index);
                 }
             }
         }
-        /* Close file */
         br.close();
+    }
+
+    /* void method addWord() */
+    public void addWord(String word) {
+        /* Call non-static method indexOf() */
+        int index = indexOf(word);
+        /* If condition to check if the word is unique */
+        if (index == -1) {
+            /* Add word to myWords array list */
+            myWords.add(word);
+            /* Add 1 to myFreqs array list */
+            myFreqs.add(1);
+        }
+    }
+
+    /* void method addFreq() */
+    public void addFreq(int index) {
+        /* Get the value of index */
+        int value = myFreqs.get(index);
+        /* Set the value to index */
+        myFreqs.set(index, value + 1);
+    }
+
+    /* int method indexOf() */
+    public int indexOf(String word) {
+        /* For loop to iterate through the array */
+        for (int i = 0; i < myWords.size(); i++) {
+            /* If condition to check if the word is unique */
+            if (myWords.get(i).equals(word)) {
+                /* Return the index */
+                return i;
+            }
+        }
+        /* Return -1 */
+        return -1;
     }
 
     /* int method findIndexOfMax() */
@@ -77,12 +112,28 @@ public class WordFreqencies {
         System.out.println("Number of unique words: " + myWords.size());
         /* Print the words and their frequencies */
         for (int i = 0; i < myWords.size(); i++) {
+            if (myFreqs.get(i) < 500) {
+                continue;
+            }
             System.out.println(myFreqs.get(i) + "\t" + myWords.get(i));
+
+            /* Open a new file */
+            File file = new File("words.txt");
+            /* Write the words and their frequencies to the file */
+            java.io.PrintWriter output = new java.io.PrintWriter(file);
+            for (int j = 0; j < myWords.size(); j++) {
+                output.println(myFreqs.get(j) + "\t\t" + myWords.get(j));
+            }
+            /* Close the file */
+            output.close();
+
         }
+
         /* Find the index of the maximum frequency */
         int maxIndex = findIndexOfMax();
         /* Print the word with the maximum frequency */
-        System.out.println("The word that occurs most often and its count are: " + myWords.get(maxIndex) + " " + myFreqs.get(maxIndex));
+        System.out.println("The word that occurs most often and its count are: " + myWords.get(maxIndex) + " "
+                + myFreqs.get(maxIndex));
     }
-    
+
 }
