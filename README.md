@@ -199,9 +199,8 @@ CGT    1
 TCA    2
 
 AGT    1
-```
-   
-```
+
+	
 Reading frame starting with 1 results in 2 unique codons
 
   and most common codon is CAA with count 2
@@ -211,9 +210,8 @@ Counts of codons between 1 and 5 inclusive are:
 CAA    2
 
 GTT    2
-```
    
-```
+
 Reading frame starting with 2 results in 2 unique codons
 
   and most common codon is TTC with count 2
@@ -228,6 +226,9 @@ AAG    1
 
 Note: The convention for text files is to end with a line break, so the above DNA string will have length 13 if directly defined as a String in your tester method, but length 14 if the text file containing it is read in as a FileResource. You can deal with this in several ways. One is to use the String method .trim() (http://docs.oracle.com/javase/7/docs/api/java/lang/String.html#trim() ) to get rid of white space. Another way to guard against identifying the final “AA “ as a codon would be adding a check that requires the last element of each codon be a letter before adding to the codon map.
 
+> codonCount.java
+	
+> smalldna.txt
 
 ### Assignment 2: Words in Files
 Write a program to determine which words occur in the greatest number of files, and for each word, which files they occur in. 
@@ -280,8 +281,10 @@ Specifically, you should do the following:
 
 * Write the void method **tester** that has no parameters. This method should call **buildWordFileMap** to select a group of files and build a HashMap of words, with each word mapped to an ArrayList of the filenames this word appears in, determine the maximum number of files any word is in, considering all words, and determine all the words that are in the maximum number of files and for each such word, print the filenames of the files it is in. (optional) If the map is not too big, then you might want to print out the complete map, all the keys, and for each key its ArrayList. This might be helpful to make sure the map was built correctly.
 
-  
+> WordsInFiles.java
 
+> brief1.txt, brief2.txt, brief3.txt, brief4.txt
+	
 ### Assignment 3: Maps Version of GladLibs
 Start with your GladLibs program you completed earlier in this lesson. Make a copy of it and call it **GladLibMap.java**. Now modify this program to use one HashMap that maps word types to ArrayList of possible words to select. Your program should still work for the additional categories verbs and fruits and should not use duplicate words from a category. Specifically, you should make the following adjustments to this program:
 
@@ -298,3 +301,5 @@ Start with your GladLibs program you completed earlier in this lesson. Make a co
 * Write a new method named **totalWordsInMap** with no parameters. This method returns the total number of words in all the ArrayLists in the HashMap. After printing the GladLib, call this method and print out the total number of words that were possible to pick from.
 
 * Write a new method named **totalWordsConsidered** with no parameters. This method returns the total number of words in the ArrayLists of the categories that were used for a particular GladLib. If only noun, color, and adjective were the categories used in a GladLib, then only calculate the sum of all the words in those three ArrayLists. Hint: You will need to keep track of the categories used in solving the GladLib, then compute this total.
+
+> GladLibMap.java
