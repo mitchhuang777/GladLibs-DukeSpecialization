@@ -120,9 +120,11 @@ Write a void method called **charactersWithNumParts** that has two int parameter
 
 > CharactersInPlay.java
 
+
 ## Programming Exercise: Using GladLibs
 
 ### Assignment: Verbs and Fruits
+
 Run the **GladLib.java** program that is provided. You should also have a **data** folder with several files. This program should generate a story using the file **madtemplate.txt**, which is also in the **data** folder. This program creates a story by replacing placeholder words such as <noun> by looking for a random word of that type. This approach uses multiple private ArrayLists, one for each type of word, to store each type of replacement. For example, one ArrayList stores different nouns. These nouns are initially read in from a file called **noun.txt** and stored in the ArrayList named **nounList**. Whenever the templated word <noun> is found in the story, a random noun from the **nounList** is used in place of <noun>. 
 
 You will now modify the **GladLib.java** file to handle two additional categories—verbs and fruits. Specifically, you should make the following adjustments to your program:
@@ -142,3 +144,12 @@ You will now modify the **GladLib.java** file to handle two additional categorie
 * Now modify your program so that once it uses a word, it never uses that word again. You should declare and initialize an additional private ArrayList to keep track of words that have been seen. HINT: You will need to modify the method **processWord**. Once it finds a word to use, check to see if that word has been used before or not. You should also be sure that you clear out this new ArrayList in **makeStory** before each run of your program. The folder **datalong** with longer data files is provided.
 
 * Modify your program to print out the total number of words that were replaced right after the story is printed.
+        
+> GladLib.java
+        
+> data/adjective.txt, animal.txt, color.txt, country.txt, fruit.txt, name.txt, noun.txt, timeframe.txt, verb.txt, madtemplate.txt, madtemplate2.txt, madtemplate3.txt
+        
+> datalong/adjective.txt, animal.txt, color.txt, country.txt, fruit.txt, name.txt, noun.txt, timeframe.txt, verb.txt, madtemplate.txt, madtemplate2.txt, madtemplate3.txt
+        
+## Programming Exercise: Improving GladLibs
+
