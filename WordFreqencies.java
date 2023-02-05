@@ -112,9 +112,11 @@ public class WordFreqencies {
         System.out.println("Number of unique words: " + myWords.size());
         /* Print the words and their frequencies */
         for (int i = 0; i < myWords.size(); i++) {
-            if (myFreqs.get(i) < 500) {
+            
+            if (myFreqs.get(i) < 300) {
                 continue;
             }
+            
             System.out.println(myFreqs.get(i) + "\t" + myWords.get(i));
 
             /* Open a new file */
