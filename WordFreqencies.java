@@ -25,7 +25,7 @@ public class WordFreqencies {
     /* void method findUnique() */
     public void findUnique() throws IOException {
         /* Create a file object */
-        File file = new File("likeit.txt");
+        File file = new File("errors.txt");
         /* Create a buffered reader object */
         BufferedReader br = new BufferedReader(new FileReader(file));
         /* Declare string variable */
