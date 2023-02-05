@@ -13,7 +13,7 @@ public class CharactersInPlay {
         /* Call non-static tester() */
         CharactersInPlay tester = new CharactersInPlay();
         tester.tester();
-        tester.charactersWithNumParts(10, 15);
+        // tester.charactersWithNumParts(2, 100);
 
     }
 
@@ -43,7 +43,7 @@ public class CharactersInPlay {
     public void findAllCharacters() throws IOException {
         myCharacters.clear();
         myFreqs.clear();
-        File file = new File("likeit.txt");
+        File file = new File("errors.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
         for (String line; (line = br.readLine()) != null;) {
             if (line.contains(".")) {
